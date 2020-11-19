@@ -4,7 +4,7 @@
 - [x] Add project to project spreadsheet
 - [x] Setup Git-hub repository
 - [x] Add an example code to project and test it. Record finding.
-  > Comments: Was able to get app running with code in the file. I followed the README provided to get code running.
+  > Comments: Was able to get app running with code in the file. I followed the README provided to get code running. Worked very well and will utilizing for helping write and get this code running. 
   
 ## Sprint 2
 - [x] Define needed components for code
