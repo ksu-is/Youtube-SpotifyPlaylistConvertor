@@ -1,3 +1,16 @@
+import json
+import os
+
+import google_auth_oauthlib.flow
+import googleapiclient.discovery
+import googleapiclient.errors
+import requests
+import youtube_dl
+
+from exceptions import ResponseException
+from secrets import spotify_token, spotify_user_id
+
+
 class CreatePlaylist:
     def __init__(self):
         self.youtube_client = self.get_youtube_client()
