@@ -3,6 +3,7 @@ class CreatePlaylist:
         self.youtube_client = self.get_youtube_client()
         self.all_song_info = {}
 
+    # Part 1: Log Into Youtube
     def get_youtube_client(self):
         """ Log Into Youtube, Copied from Youtube Data API """
         # Disable OAuthlib's HTTPS verification when running locally.
@@ -25,8 +26,9 @@ class CreatePlaylist:
 
         return youtube_client
     
+    #Part 2: Grab Liked Videos From Youtube & Create A Dictionary Of Important Song Information
     def get_liked_videos(self):
-        """Grab Our Liked Videos & Create A Dictionary Of Important Song Information"""
+       
         request = self.youtube_client.videos().list(
             part="snippet,contentDetails,statistics",
             myRating="like"
@@ -57,8 +59,9 @@ class CreatePlaylist:
 
                 }
 
+    # Part 3: Create A New Playlist
     def create_playlist(self):
-        """Create A New Playlist"""
+        
         request_body = json.dumps({
             "name": "Youtube Liked Vids",
             "description": "All Liked Youtube Videos",
@@ -80,8 +83,9 @@ class CreatePlaylist:
         # playlist id
         return response_json["id"]
 
+    # Part 4: Search For the Song
     def get_spotify_uri(self, song_name, artist):
-        """Search For the Song"""
+        
         query = "https://api.spotify.com/v1/search?query=track%3A{}+artist%3A{}&type=track&offset=0&limit=20".format(
             song_name,
             artist
@@ -101,8 +105,9 @@ class CreatePlaylist:
 
         return uri
     
+    # Part 5: Add all liked songs into a new Spotify playlist
     def add_song_to_playlist(self):
-        """Add all liked songs into a new Spotify playlist"""
+        
         # populate dictionary with our liked songs
         self.get_liked_videos()
 
