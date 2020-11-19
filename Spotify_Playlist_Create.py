@@ -25,7 +25,7 @@ class CreatePlaylist:
 
         return youtube_client
     
-     def get_liked_videos(self):
+    def get_liked_videos(self):
         """Grab Our Liked Videos & Create A Dictionary Of Important Song Information"""
         request = self.youtube_client.videos().list(
             part="snippet,contentDetails,statistics",
@@ -57,7 +57,7 @@ class CreatePlaylist:
 
                 }
 
-  def create_playlist(self):
+    def create_playlist(self):
         """Create A New Playlist"""
         request_body = json.dumps({
             "name": "Youtube Liked Vids",
@@ -79,3 +79,24 @@ class CreatePlaylist:
 
         # playlist id
         return response_json["id"]
+
+    def get_spotify_uri(self, song_name, artist):
+        """Search For the Song"""
+        query = "https://api.spotify.com/v1/search?query=track%3A{}+artist%3A{}&type=track&offset=0&limit=20".format(
+            song_name,
+            artist
+        )
+        response = requests.get(
+            query,
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": "Bearer {}".format(spotify_token)
+            }
+        )
+        response_json = response.json()
+        songs = response_json["tracks"]["items"]
+
+        # only use the first song
+        uri = songs[0]["uri"]
+
+        return uri
