@@ -11,7 +11,7 @@
   > Notes: Py code for the app (create_playlist.py), secrets.py for Spotify Oauth, requirements.txt for downloading dependencies.
 - [x] Create app python code
   > Notes: Divide main code into 5 seperate functions (Log into youtube, grab liked videos, create new playlist, search for song, add song to new playlist). SpotifyGeneratePlaylist has a python file that could be modified to assist in this. 
-- [ ] Add code to .py code to be able to change description of Spotify Playlist.
+- [x] Add code to .py code to be able to change description of Spotify Playlist.
 ## Sprint 3
 - [x] Make minor changes to code to finalize.
 - [x] Spotify Oauth
